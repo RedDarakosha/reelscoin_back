@@ -1,7 +1,9 @@
 from dependency_injector import containers, providers
 
+from src.core.db import acquire_conn, init_db_pool
+from src.core.redis import acquire_redis_conn, create_redis_pool
 from src.core.settings import Settings, settings
-from src.core.db import init_db_pool, acquire_conn
+from src.models.user import UserCache
 
 
 class Container(containers.DeclarativeContainer):
@@ -13,6 +15,11 @@ class Container(containers.DeclarativeContainer):
 
     pool = providers.Resource(init_db_pool, settings.db_settings)
     connection = providers.Resource(acquire_conn, pool)
+    redis_pool = providers.Resource(create_redis_pool, settings.redis_settings)
+    redis_cache = providers.Factory(acquire_redis_conn, redis_pool)
+    # user_cache = providers.Resource(
+    #     UserCache, settings.cache_config.user_cache_expired_at
+    # )
 
 
 def init_container(app):

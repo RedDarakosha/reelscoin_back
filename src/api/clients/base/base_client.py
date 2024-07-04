@@ -1,8 +1,8 @@
 import urllib.parse as urlparse
 from urllib.parse import urlencode
 
-from pydantic import BaseModel
 from aiohttp import ClientSession
+from pydantic import BaseModel
 
 from .base_request import BaseRequest, GETRequest, POSTRequest
 from .base_response import BaseResponse

@@ -2,8 +2,8 @@
 
 from asyncpg import create_pool
 
+from .pool import DBConnection, DBPool, acquire_conn
 from .record import DBRecord
-from .pool import DBPool, DBConnection, acquire_conn
 
 
 async def init_db_pool(db_settings):

@@ -1,7 +1,6 @@
 import base64
 
 from asyncpg import Connection
-
 from pydantic import BaseModel
 
 

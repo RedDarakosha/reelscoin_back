@@ -1,5 +1,5 @@
-from src.api.user.router import user_router
 from src.api.game.router import game_router
+from src.api.user.router import user_router
 
 routers = [user_router, game_router]
 
