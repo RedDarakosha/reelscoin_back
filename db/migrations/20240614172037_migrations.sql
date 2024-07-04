@@ -14,3 +14,5 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE INDEX IF NOT EXISTS tg_id_index ON users(tg_id);
 -- migrate:down
 
+DROP INDEX tg_id_index ON users(tg_id);
+DROP TABLE users;
